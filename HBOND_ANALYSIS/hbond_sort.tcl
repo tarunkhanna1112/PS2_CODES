@@ -8,7 +8,7 @@ close $g
 
 set h [open "hbond_sel" "w"]
 
-puts $h "# AcceptorID	AcceptorNAME	donorID	donorNAME	fraction"
+puts $h "# AcceptorID	AcceptorNAME	donorID	donorNAME	fraction	avg_dist	avg_angle"
 
 set k 7
 
@@ -40,6 +40,8 @@ while { $k < [llength $data1] } {
 
 
 	set frac [lindex $data1 [expr { $k + 4 }]]
+	set avg_dist [lindex $data1 [expr { $k + 5 }]]
+	set avg_angle [lindex $data1 [expr { $k + 6 }]]
 
 	set k1 0
 
@@ -47,7 +49,7 @@ while { $k < [llength $data1] } {
 		set cri [lindex $data $k1]
 
 		if { $aci == $cri && $frac >= $frac_limit } {
-			puts $h "$aci	$acn	$doi	$don	$frac"
+			puts $h "$aci	$acn	$doi	$don	$frac	$avg_dist $avg_angle"
 		}
 		incr k1
 	}
@@ -62,7 +64,7 @@ close $h1
 
 set h2 [open "sorted_hbond_sel" "w"]
 
-set k 6
+set k 8
 set i 0
 while { $k < [llength $data2] } {
 	set l 0
@@ -79,7 +81,7 @@ while { $k < [llength $data2] } {
 
 		puts $h2 "$col1($i)	[lindex $data2 [expr { $k + 1 }]]"
 
-		set k1 6
+		set k1 8
 
 		while { $k1 < [llength $data2] } {
 			set ccol1 [lindex $data2 $k1]
@@ -98,18 +100,20 @@ while { $k < [llength $data2] } {
 
 					set col4 [lindex $data2 [expr { $k1 + 3 }]]
 					set col5 [lindex $data2 [expr { $k1 + 4 }]]
+					set col6 [lindex $data2 [expr { $k1 + 5 }]]
+					set col7 [lindex $data2 [expr { $k1 + 6 }]]
 					set pdbid [expr { $col3($l) - $offset }]
 
-					puts $h2 "	$col3($l)	$col4	$col5	$pdbid"
+					puts $h2 "	$col4	$col5	$pdbid $col6 $col7"
 					incr l
 				}
 			}
-			incr k1 5
+			incr k1 7
 		}
 		incr i
 	}
 	
-	incr k 5
+	incr k 7
 }
 			
 
