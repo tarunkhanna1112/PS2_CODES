@@ -2,7 +2,7 @@ set f [open "[lindex $::argv 0]" "r"]
 set data [read $f]
 close $f
 
-set g [open "P9R_ori" "w"]
+set g [open "[lindex $::argv 1]" "w"]
 
 set k 0
 
