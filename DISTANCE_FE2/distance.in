@@ -1,0 +1,3 @@
+trajin prod1_w.nc
+distance :13357@O1,O2,C1,C2,C3,C4,C5,C6 :13347 out dis_LMA
+go

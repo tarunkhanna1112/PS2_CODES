@@ -1,0 +1,4 @@
+trajin prod1_w.nc
+reference molf.inpcrd [ref]
+rmsd :8107-8440 reference perres perresout MONOMER_A.dat range 8308-8371 perrescenter
+go
