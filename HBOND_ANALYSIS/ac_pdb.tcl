@@ -1,4 +1,4 @@
-# GENERATING A CSV FILE WITH THE NEIGBOUR INFORMATION ABOUT THE NEAREST NEIGBOURS tclsh ac_pdb.tcl output pdb_map md_map h_bond_sorted_file
+# GENERATING A CSV FILE WITH THE NEIGBOUR INFORMATION ABOUT THE NEAREST NEIGBOURS
 
 package require csv
 
@@ -54,7 +54,7 @@ while { $k < [llength $data2] } {
 		set dis [lindex $data2 [expr { $k + 3 }]]
 		set angle [lindex $data2 [expr { $k + 4 }]]
 
-		lappend col $res $residpdb $dis $angle $frac [expr { $cpos + 1 }]
+		lappend col $res $residpdb $dis $angle $frac [expr { $cpos + 1 }] $resid
 	
 		lappend all_list $col
 	}
